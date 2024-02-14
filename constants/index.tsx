@@ -8,12 +8,17 @@ export const abi = [
                 internalType: "address",
             },
             {
+                name: "_link",
+                type: "address",
+                internalType: "address",
+            },
+            {
                 name: "_keyHash",
                 type: "bytes32",
                 internalType: "bytes32",
             },
             {
-                name: "_subscriptionId",
+                name: "_subId",
                 type: "uint64",
                 internalType: "uint64",
             },
@@ -46,13 +51,6 @@ export const abi = [
     },
     {
         type: "function",
-        name: "getEntranceFee",
-        inputs: [],
-        outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
-        stateMutability: "pure",
-    },
-    {
-        type: "function",
         name: "rawFulfillRandomWords",
         inputs: [
             {
@@ -71,41 +69,66 @@ export const abi = [
     },
     {
         type: "event",
-        name: "FlipRequested",
+        name: "CoinFlipped",
         inputs: [
             {
                 name: "requestId",
                 type: "uint256",
-                indexed: false,
+                indexed: true,
                 internalType: "uint256",
+            },
+            {
+                name: "amount",
+                type: "uint256",
+                indexed: true,
+                internalType: "uint256",
+            },
+            {
+                name: "player",
+                type: "address",
+                indexed: false,
+                internalType: "address",
             },
         ],
         anonymous: false,
     },
     {
         type: "event",
-        name: "FlipResult",
+        name: "CoinFlippedAndLose",
         inputs: [
             {
                 name: "requestId",
                 type: "uint256",
-                indexed: false,
+                indexed: true,
                 internalType: "uint256",
             },
             {
-                name: "side",
+                name: "amount",
                 type: "uint256",
-                indexed: false,
+                indexed: true,
                 internalType: "uint256",
+            },
+            {
+                name: "player",
+                type: "address",
+                indexed: false,
+                internalType: "address",
             },
         ],
         anonymous: false,
     },
     {
+        type: "event",
+        name: "FlipRequested",
+        inputs: [],
+        anonymous: false,
+    },
+    {
         type: "error",
-        name: "CoinFlip__InsufficientFunds",
+        name: "CoinFlip__InsufficientBetAmount",
         inputs: [],
     },
+    { type: "error", name: "CoinFlip__TransferFailed", inputs: [] },
     {
         type: "error",
         name: "OnlyCoordinatorCanFulfill",
@@ -119,4 +142,4 @@ export const abi = [
         ],
     },
 ];
-export const contractAddress = "0xBb2180ebd78ce97360503434eD37fcf4a1Df61c3";
+export const contractAddress = "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707";

@@ -32,7 +32,7 @@ const Flip = () => {
                 abi: abi,
                 functionName: "flip",
                 value: money,
-                args: [1],
+                args: [0],
             });
             console.log(request);
             const { hash } = await writeContract(request);
